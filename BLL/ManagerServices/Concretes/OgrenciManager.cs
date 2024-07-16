@@ -11,15 +11,15 @@ namespace BLL.ManagerServices.Concretes
 {
     public class OgrenciManager : BaseManager<Ogrenci>, IOgrenciManager
     {
-        IOgrenciRepository _iOgrRep;
-        public OgrenciManager(IOgrenciRepository iOgrRep) : base(iOgrRep)
+        IOgrenciRepository _OgrRep;
+        public OgrenciManager(IOgrenciRepository OgrRep) : base(OgrRep)
         {
-            _iOgrRep = iOgrRep;
+            _OgrRep = OgrRep;
         }
 
-        public async Task<bool> CreatUser(Ogrenci item)
+        public Task<bool> CreatUserAsync(Ogrenci item)
         {
-            return await _iOgrRep.AddUser(item);
+            throw new NotImplementedException();
         }
     }
 }

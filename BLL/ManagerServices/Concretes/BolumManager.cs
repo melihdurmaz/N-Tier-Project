@@ -11,11 +11,11 @@ namespace BLL.ManagerServices.Concretes
 {
     public class BolumManager:BaseManager<Bolum>,IBolumManager
     {
-        IBolumRepository _ibolumRep;
+        IBolumRepository _bolumRep;
 
-        public BolumManager(IBolumRepository ibolumRep) : base(ibolumRep)
+        public BolumManager(IBolumRepository bolumRep) : base(bolumRep)
         {
-            _ibolumRep = ibolumRep;
+            _bolumRep = bolumRep;
         }
     }
 }

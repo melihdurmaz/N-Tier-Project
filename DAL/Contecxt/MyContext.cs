@@ -1,6 +1,5 @@
-﻿using ENTITIES.Models;
-using MAP.Options;
-
+﻿using DAL.MAP;
+using ENTITIES.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

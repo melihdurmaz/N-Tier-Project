@@ -11,10 +11,11 @@ namespace BLL.ManagerServices.Concretes
 {
     public class OgrenciDersManager:BaseManager<OgrenciDers>,IOgrenciDersManager
     {
-        IOgrenciDersRepository _iOgrDersRep;
+        IOgrenciDersRepository _OgrDersRep;
 
-        public OgrenciDersManager(IOgrenciDersRepository iOgrDersRep) : base(iOgrDersRep)
+        public OgrenciDersManager(IOgrenciDersRepository OgrDersRep) : base(OgrDersRep)
         {
+            _OgrDersRep = OgrDersRep;
         }
     }
 }

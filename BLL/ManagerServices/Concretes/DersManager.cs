@@ -11,11 +11,11 @@ namespace BLL.ManagerServices.Concretes
 {
     public class DersManager:BaseManager<Ders>,IDersManager
     {
-        IDersRepository _idersRep;
+        IDersRepository _dersRep;
 
-        public DersManager(IDersRepository idersRep) : base(idersRep)
+        public DersManager(IDersRepository dersRep) : base(dersRep)
         {
-            _idersRep = idersRep;
+            _dersRep = dersRep;
         }
     }
 }
