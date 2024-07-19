@@ -1,27 +1,48 @@
-var builder = WebApplication.CreateBuilder(args);
+using BLL.DependencyServices;
+using DAL.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+
+
+builder.Services.AddIdentityService();
+builder.Services.AddDbContext<MyContext>(opt=>
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("MyConnectionString")));
+
+//builder.Services.AddDbContextService();
+
+
+
+builder.Services.AddRepositoryManagerService();
+
+//Session 
+
+builder.Services.AddDistributedMemoryCache();
+
+
+
+WebApplication app = builder.Build();
+
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
 
-app.UseRouting();
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllers();
 
 app.Run();

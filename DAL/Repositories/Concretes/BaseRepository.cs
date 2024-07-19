@@ -1,4 +1,4 @@
-﻿using DAL.Contecxt;
+﻿using DAL.Context;
 using DAL.Repositories.Abstracts;
 using ENTITIES.Interfaces;
 using Microsoft.EntityFrameworkCore;

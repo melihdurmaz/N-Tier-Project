@@ -1,4 +1,4 @@
-﻿using DAL.Contecxt;
+﻿using DAL.Context;
 using DAL.Repositories.Abstracts;
 using ENTITIES.Models;
 using Microsoft.AspNetCore.Identity;
@@ -12,16 +12,16 @@ namespace DAL.Repositories.Concretes
 {
     public class OgrenciRepository : BaseRepository<Ogrenci>,IOgrenciRepository
     {
-        UserManager<Ogrenci> _userManager;
-        public OgrenciRepository(MyContext db,UserManager<Ogrenci> userManager) : base(db)
+        //UserManager<Ogrenci> _userManager;
+        public OgrenciRepository(MyContext db) : base(db)
         {
-            _userManager = userManager;
+           // _userManager = userManager;
         }
         public async Task<bool> AddUser(Ogrenci item)
         {
-            IdentityResult result = await _userManager.CreateAsync(item, item.PasswordHash);
+           // IdentityResult result = await _userManager.CreateAsync(item, item.PasswordHash);
 
-            if (result.Succeeded) return true;
+            //if (result.Succeeded) return true;
             //List<IdentityError> errors = new List<IdentityError>();
             //foreach (IdentityError error in result.Errors)
             //{

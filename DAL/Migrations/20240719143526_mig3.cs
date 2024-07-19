@@ -1,25 +1,25 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class mig321 : Migration
+    public partial class mig3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Denemes");
+
             migrationBuilder.CreateTable(
                 name: "Bolumler",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    bolum_Adi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    yaratılmatarihi = table.Column<DateTime>(name: "yaratılma tarihi", type: "datetime2", nullable: false)
+                    bolum_Adi = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,8 +34,7 @@ namespace DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DersAdi = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Kredi = table.Column<int>(type: "int", nullable: false),
-                    BolumId = table.Column<int>(type: "int", nullable: false),
-                    yaratılmatarihi = table.Column<DateTime>(name: "yaratılma tarihi", type: "datetime2", nullable: false)
+                    BolumId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,8 +55,7 @@ namespace DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Ogr_Adi = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Ogr_Soyadi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BolumId = table.Column<int>(type: "int", nullable: false),
-                    yaratılmatarihi = table.Column<DateTime>(name: "yaratılma tarihi", type: "datetime2", nullable: false)
+                    BolumId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,8 +75,7 @@ namespace DAL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BolumId = table.Column<int>(type: "int", nullable: true),
-                    yaratılmatarihi = table.Column<DateTime>(name: "yaratılma tarihi", type: "datetime2", nullable: false)
+                    BolumId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,15 +91,15 @@ namespace DAL.Migrations
                 name: "OgrenciDersler",
                 columns: table => new
                 {
-                    OgrenciDersId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    OgrenciDersId = table.Column<int>(type: "int", nullable: false),
                     OgrenciId = table.Column<int>(type: "int", nullable: false),
-                    DersId = table.Column<int>(type: "int", nullable: false),
-                    yaratılmatarihi = table.Column<DateTime>(name: "yaratılma tarihi", type: "datetime2", nullable: false)
+                    DersId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OgrenciDersler", x => x.OgrenciDersId);
+                    table.PrimaryKey("PK_OgrenciDersler", x => x.Id);
                     table.ForeignKey(
                         name: "FK_OgrenciDersler_Dersler_DersId",
                         column: x => x.DersId,
@@ -121,15 +118,14 @@ namespace DAL.Migrations
                 name: "OgretmenDersler",
                 columns: table => new
                 {
-                    OgrentmenDersId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OgretmenId = table.Column<int>(type: "int", nullable: false),
-                    DersId = table.Column<int>(type: "int", nullable: false),
-                    yaratılmatarihi = table.Column<DateTime>(name: "yaratılma tarihi", type: "datetime2", nullable: false)
+                    DersId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OgretmenDersler", x => x.OgrentmenDersId);
+                    table.PrimaryKey("PK_OgretmenDersler", x => x.Id);
                     table.ForeignKey(
                         name: "FK_OgretmenDersler_Dersler_DersId",
                         column: x => x.DersId,
@@ -200,6 +196,19 @@ namespace DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Bolumler");
+
+            migrationBuilder.CreateTable(
+                name: "Denemes",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Denemes", x => x.ID);
+                });
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ENTITIES.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ENTITIES.Models
 {
-    public class Ogretmen:BaseEntity
+    public class Ogretmen:IEntity
     {
-        
+        public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<OgretmenDers> OgretmenDersler { get; set; }
     }
