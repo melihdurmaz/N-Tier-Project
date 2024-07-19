@@ -1,4 +1,5 @@
-﻿using DAL.Contecxt;
+﻿using DAL.Context;
+using ENTITIES.Identity;
 using ENTITIES.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,15 +15,11 @@ namespace BLL.DependencyServices
     {
         public static IServiceCollection AddIdentityService(this IServiceCollection services)
         {
-            services.AddIdentity<Ogrenci, IdentityRole>(x =>
-            {
-                x.Password.RequiredUniqueChars = 0;
-                x.Password.RequiredLength = 8;
-
-            }).AddEntityFrameworkStores<MyContext>();
-
+            services.AddIdentity<AppUser, AppRole>()
+            .AddEntityFrameworkStores<MyContext>();
+           
+    
             return services;
-
         }
     }
 }
