@@ -15,7 +15,19 @@ namespace BLL.DependencyServices
     {
         public static IServiceCollection AddIdentityService(this IServiceCollection services)
         {
-            services.AddIdentity<AppUser, AppRole>()
+            services.AddIdentity<AppUser, AppRole>(x =>
+
+            {
+                
+                x.Password.RequiredUniqueChars = 0;
+                x.Password.RequiredLength = 3;
+                x.Password.RequireNonAlphanumeric = false;
+                x.Password.RequireDigit = false;
+                x.Password.RequireLowercase = false;
+                x.Password.RequireUppercase = false;
+
+            }
+                )
             .AddEntityFrameworkStores<MyContext>();
            
     
