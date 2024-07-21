@@ -20,11 +20,11 @@ namespace BLL.ManagerServices.Concretes
 
         public string Add(T item)
         {
-            if (item.CreatedDate != null)
-            {
-                _irp.Add(item);
-                return "ekleme başarılı";
-            }
+            //if (item.CreatedDate != null)
+            //{
+            //    _irp.Add(item);
+            //    return "ekleme başarılı";
+            //}
             return "ekleme başarısız";
         }
 

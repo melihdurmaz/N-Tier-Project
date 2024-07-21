@@ -1,4 +1,5 @@
-﻿using DAL.Contecxt;
+﻿using Castle.Core.Configuration;
+using DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,12 +13,13 @@ namespace BLL.DependencyServices
 {
     public static class DbContextServiceInjection
     {
-        public static IServiceCollection AddDbContextService(this IServiceCollection services)
+        public static IServiceCollection AddDbContextService(this IServiceCollection services, Microsoft.Extensions.Configuration.IConfiguration configuration)
         {
-            ServiceProvider provider = services.BuildServiceProvider();
-            IConfiguration configuration = provider.GetService<IConfiguration>();
-            services.AddDbContextPool<MyContext>(options => options.UseSqlServer(configuration.GetConnectionString
-                ("MyConnecion")).UseLazyLoadingProxies());
+            // Register the DbContext with the service collection
+            services.AddDbContextPool<MyContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+                       .UseLazyLoadingProxies());
+
             return services;
         }
     }

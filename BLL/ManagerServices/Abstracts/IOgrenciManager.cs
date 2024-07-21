@@ -9,6 +9,6 @@ namespace BLL.ManagerServices.Abstracts
 {
     public interface IOgrenciManager:IManager<Ogrenci>
     {
-        Task<bool> CreatUserAsync(Ogrenci item);
+       
     }
 }
