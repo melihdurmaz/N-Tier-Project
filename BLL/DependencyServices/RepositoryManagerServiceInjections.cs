@@ -17,7 +17,8 @@ namespace BLL.DependencyServices
         {
             services.AddScoped(typeof(Irepository<>), typeof(BaseRepository<>));
             services.AddScoped(typeof(IManager<>), typeof(BaseManager<>));
-            
+            services.AddScoped<IAppUserManager, AppUserManager>();
+            services.AddScoped<IAppUserRepository, AppUserRepository>();
             services.AddScoped<IOgrenciRepository, OgrenciRepository>();
             services.AddScoped<IDersRepository, DersRepository>();
             services.AddScoped<IOgretmenRepository, OgretmenRepository>();
