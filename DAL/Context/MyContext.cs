@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Context
 {
-    public class MyContext:IdentityDbContext<AppUser,AppRole,string>
+    public class MyContext:IdentityDbContext<AppUser,AppRole,int>
     {
         public MyContext()
         {
