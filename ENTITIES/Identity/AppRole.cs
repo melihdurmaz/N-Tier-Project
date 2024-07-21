@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using ENTITIES.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ENTITIES.Identity
 {
-    public class AppRole:IdentityRole<string>
+    public class AppRole:IdentityRole<int>,IEntity
     {
     }
 }
