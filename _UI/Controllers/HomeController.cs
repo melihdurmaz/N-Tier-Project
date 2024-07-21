@@ -1,8 +1,8 @@
-using _UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using _UI.Models;
 
-namespace _UI.Controllers
+namespace WebApplication6.Controllers
 {
     public class HomeController : Controller
     {
