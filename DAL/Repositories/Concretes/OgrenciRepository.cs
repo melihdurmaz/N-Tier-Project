@@ -17,18 +17,10 @@ namespace DAL.Repositories.Concretes
         {
            // _userManager = userManager;
         }
-        public async Task<bool> AddUser(Ogrenci item)
-        {
-           // IdentityResult result = await _userManager.CreateAsync(item, item.PasswordHash);
+        //public async Task<bool> AddUser(Ogrenci item)
+        //{
+        //   // 
 
-            //if (result.Succeeded) return true;
-            //List<IdentityError> errors = new List<IdentityError>();
-            //foreach (IdentityError error in result.Errors)
-            //{
-            //    errors.Add(error);
-            //}
-            return false;
-
-        }
+        //}
     }
 }
